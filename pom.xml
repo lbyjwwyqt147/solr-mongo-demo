@@ -114,4 +114,17 @@
 	</build>
 
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Central</name>
+            <url>http://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>plugins</id>
+            <name>Plugins</name>
+            <url>http://repo.maven.apache.org/maven2/org/apache/maven/plugins/</url>
+        </repository>
+    </repositories>
+
 </project>
