@@ -1,0 +1,13 @@
+server:
+  port: 18080
+
+
+spring:
+  data:
+    # solr  配置
+    solr:
+      host: http://192.168.255.128:8983/solr/
+
+    #mongo 配置
+    mongodb:
+      uri:  mongodb://root:root@192.168.255.128:27017/myMongoTest?authSource=admin
