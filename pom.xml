@@ -86,6 +86,14 @@
 		   <properties>
 				   <env>dev</env>
 		   </properties>
+		   <activation>
+			   <activeByDefault>true</activeByDefault>
+		   </activation>
+		   <build>
+			   <filters>
+				   <filter>application-dev.yml</filter>
+			   </filters>
+		   </build>
 	   </profile>
 
 		<profile>
@@ -94,8 +102,13 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<env>dev</env>
+				<env>test</env>
 			</properties>
+			<build>
+				<filters>
+					<filter>application-test.yml</filter>
+				</filters>
+			</build>
 		</profile>
 
 		<profile>
@@ -106,6 +119,11 @@
 			<properties>
 				<env>prod</env>
 			</properties>
+			<build>
+				<filters>
+					<filter>application-prod.yml</filter>
+				</filters>
+			</build>
 		</profile>
 	</profiles>
 
@@ -165,9 +183,12 @@
 		</filters>
 		<resources>
 			<resource>
-				<!-- 配置文件所在目录 -->
+				<!-- 指定 src/main/resources下所有文件及文件夹为资源文件 -->
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
 			</resource>
 			<resource>
 				<!-- 配置文件所在目录 -->
