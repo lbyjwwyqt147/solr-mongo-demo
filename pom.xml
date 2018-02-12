@@ -84,46 +84,31 @@
        <profile>
 		   <id>dev</id>
 		   <properties>
-				   <env>dev</env>
+			   <profileActive>dev</profileActive>
 		   </properties>
 		   <activation>
 			   <activeByDefault>true</activeByDefault>
 		   </activation>
-		   <build>
-			   <filters>
-				   <filter>src/main/resources/application-dev.yml</filter>
-			   </filters>
-		   </build>
 	   </profile>
 
 		<profile>
 			<id>test</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
-				<env>test</env>
+				<profileActive>test</profileActive>
 			</properties>
-			<build>
-				<filters>
-					<filter>src/main/resources/application-test.yml</filter>
-				</filters>
-			</build>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
 		</profile>
 
 		<profile>
 			<id>prod</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
-				<env>prod</env>
+				<profileActive>prod</profileActive>
 			</properties>
-			<build>
-				<filters>
-					<filter>src/main/resources/application-prod.yml</filter>
-				</filters>
-			</build>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
 		</profile>
 	</profiles>
 
@@ -136,7 +121,16 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>1.5.9.RELEASE</version>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<delimiters>
+						<delimiter>@</delimiter>
+					</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -178,22 +172,15 @@
 
 
 		<!-- 不同环境的配置文件 -->
-        <filters>
-			<filter>src/main/resources/application-${env}.yml</filter>
-		</filters>
 		<resources>
 			<resource>
 				<!-- 指定 src/main/resources下所有文件及文件夹为资源文件 -->
 				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
 				<includes>
-					<include>**/*</include>
+					<include>application-${profileActive}.yml</include>
+					<include>application.yml</include>
 				</includes>
-			</resource>
-			<resource>
-				<!-- 配置文件所在目录 -->
-				<directory>src/main/resources</directory>
-				<filtering>false</filtering>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 

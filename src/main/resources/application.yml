@@ -11,3 +11,6 @@ spring:
     #mongo 配置
     mongodb:
       uri:  mongodb://root:root@192.168.255.128:27017/myMongoTest?authSource=admin
+
+  profiles:
+    active: @profileActive@
