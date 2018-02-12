@@ -91,7 +91,7 @@
 		   </activation>
 		   <build>
 			   <filters>
-				   <filter>application-dev.yml</filter>
+				   <filter>src/main/resources/application-dev.yml</filter>
 			   </filters>
 		   </build>
 	   </profile>
@@ -106,7 +106,7 @@
 			</properties>
 			<build>
 				<filters>
-					<filter>application-test.yml</filter>
+					<filter>src/main/resources/application-test.yml</filter>
 				</filters>
 			</build>
 		</profile>
@@ -121,7 +121,7 @@
 			</properties>
 			<build>
 				<filters>
-					<filter>application-prod.yml</filter>
+					<filter>src/main/resources/application-prod.yml</filter>
 				</filters>
 			</build>
 		</profile>
